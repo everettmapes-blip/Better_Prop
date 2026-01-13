@@ -325,6 +325,7 @@ MonoBehaviour:
   defaultHeight: 2
   crouchHeight: 1
   crouchSpeed: 3
+  isRunning: 0
 --- !u!143 &373806611
 CharacterController:
   m_ObjectHideFlags: 0
