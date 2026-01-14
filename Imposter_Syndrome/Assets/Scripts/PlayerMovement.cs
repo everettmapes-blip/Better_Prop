@@ -19,14 +19,20 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
-
+    private float originalHeight;
+    private Vector3 originalCenter;
     private bool canMove = true;
-
+    
+    private float originalCameraY;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        originalHeight = characterController.height;
+        originalCenter = characterController.center;
+        originalCameraY = playerCamera.transform.localPosition.y;
+
     }
 
     void Update()
@@ -39,10 +45,36 @@ public class PlayerMovement : MonoBehaviour
 
         float speed = walkSpeed;
 
+
+
+        
+
         if (isCrouching)
-            speed = crouchSpeed;
-        else if (isRunning)
-            speed = runSpeed;
+        {
+            characterController.height = crouchHeight;
+            characterController.center =
+                originalCenter - new Vector3(0, (originalHeight - crouchHeight) / 2f, 0);
+
+            playerCamera.transform.localPosition =
+                new Vector3(0, originalCameraY - 0.6f, 0);
+        }
+        else
+        {
+            characterController.height = originalHeight;
+            characterController.center = originalCenter;
+
+            playerCamera.transform.localPosition =
+                new Vector3(0, originalCameraY, 0);
+        }
+        if (!isCrouching)
+        {
+            if (Physics.Raycast(transform.position, Vector3.up, originalHeight))
+            {
+                // Something overhead – stay crouched
+                characterController.height = crouchHeight;
+                characterController.center = originalCenter - new Vector3(0, (originalHeight - crouchHeight) / 2f, 0);
+            }
+        }
 
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
