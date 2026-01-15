@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject bulletPrefab;
@@ -18,13 +19,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private void FireWeapon()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-        bullet.GetComponent<RigidBody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLifetime));
 
     }
     // 4:45 into youtube video channel is mike's code its the second video 
-    private string DestroyBulletAfterTime(GameObject bullet, float bulletPrefabLifetime)
+    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
-        throw new NotImplementedException();
+        yield return new WaitForSeconds(delay);
+        Destroy(bullet);
+        
     }
 }
