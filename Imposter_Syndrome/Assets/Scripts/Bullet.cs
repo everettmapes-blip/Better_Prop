@@ -3,14 +3,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    private void OnCollisionEnter(Collision collision)
+    {   
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.CompareTag("Target") || collision.gameObject.CompareTag("Wall") ||collision.gameObject.CompareTag("Roof") || collision.gameObject.CompareTag("Floor"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
