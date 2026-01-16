@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float crouchHeight = 1f;
     public float crouchSpeed = 3f;
     public bool isRunning = false;
+    public bool isCrouching = false;
 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
@@ -43,10 +44,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 right = transform.right;
 
         // 1. INPUTS
-        bool isCrouching = Input.GetKey(KeyCode.LeftControl);
+        isCrouching = Input.GetKey(KeyCode.LeftControl);
         
         // Fixed: added 'bool' type definition
-        bool runJumpping = Input.GetKey(KeyCode.LeftShift) && Input.GetButtonDown("Jump"); 
+        
         
         // Check for Running
         isRunning = Input.GetKey(KeyCode.LeftShift) && !isCrouching;
@@ -66,19 +67,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            // Check if we are forced to stay crouched (something above head)
-            if (Physics.Raycast(transform.position, Vector3.up, originalHeight))
-            {
-                characterController.height = crouchHeight;
-                characterController.center = originalCenter - new Vector3(0, (originalHeight - crouchHeight) / 2f, 0);
-            }
-            else
-            {
-                // Stand up normally
-                characterController.height = originalHeight;
+            characterController.height = originalHeight;
                 characterController.center = originalCenter;
                 playerCamera.transform.localPosition = new Vector3(0, originalCameraY, 0);
-            }
+            // Check if we are forced to stay crouched (something above head)
+            
         }
 
         // 3. MOVEMENT (ESDF REPLACEMENT)
