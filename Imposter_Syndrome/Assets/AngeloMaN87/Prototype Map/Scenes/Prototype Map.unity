@@ -656,15 +656,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4519716788627816, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1775,6 +1775,7 @@ MonoBehaviour:
   crouchHeight: 1
   crouchSpeed: 3
   isRunning: 0
+  isCrouching: 0
 --- !u!143 &1731189971
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1849,9 +1850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d68aca9fc622140aa4311a8145954f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2972397712058306220, guid: aab7b4cd68560524c9f49675f2cff5bc, type: 3}
+  bulletPrefab: {fileID: 9187671710908451413, guid: 622a2112098f15a45be1eaf70f3923a9, type: 3}
   bulletSpawn: {fileID: 2120315597}
-  bulletVelocity: 30
+  bulletVelocity: 5
   bulletPrefabLifetime: 3
 --- !u!1 &2120315596
 GameObject:
@@ -1878,7 +1879,7 @@ Transform:
   m_GameObject: {fileID: 2120315596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.409}
+  m_LocalPosition: {x: 0, y: 0, z: -0.4343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
