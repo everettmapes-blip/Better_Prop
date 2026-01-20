@@ -1850,10 +1850,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d68aca9fc622140aa4311a8145954f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 9187671710908451413, guid: 622a2112098f15a45be1eaf70f3923a9, type: 3}
+  bulletPrefab: {fileID: 1227844867845267194, guid: 27bbacdfb3af7244caa5d071102aa302, type: 3}
   bulletSpawn: {fileID: 2120315597}
-  bulletVelocity: 5
+  bulletVelocity: 50
   bulletPrefabLifetime: 3
+  playerCamera: {fileID: 1728646818}
+  isShooting: 0
+  readyToShoot: 0
+  shootingDelay: 0.1
+  bulletsPerBurst: 3
+  burstBulletsleft: 0
+  spreadIntensity: 0
+  currentShootingMode: 2
 --- !u!1 &2120315596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,7 +1887,7 @@ Transform:
   m_GameObject: {fileID: 2120315596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.4343}
+  m_LocalPosition: {x: 0, y: 0, z: -0.45700002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
