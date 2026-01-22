@@ -16,6 +16,9 @@ public class Weapon : MonoBehaviour
     public int burstBulletsleft;
     public float spreadIntensity; 
 
+    public GameObject muzzleEffect;
+
+
     public enum ShootingMode
     {
         Single,
@@ -54,6 +57,9 @@ public class Weapon : MonoBehaviour
 
     private void FireWeapon()
     {
+
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
@@ -73,7 +79,7 @@ public class Weapon : MonoBehaviour
             allowReset = false;
         }
 
-        // 3rdmikes code video 6:07
+        
         if ( currentShootingMode == ShootingMode.Burst && burstBulletsleft > 1 )
         {
             burstBulletsleft--;
