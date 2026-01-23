@@ -58,8 +58,16 @@ public class Weapon : MonoBehaviour
     private void FireWeapon()
     {
 
-        muzzleEffect.GetComponent<ParticleSystem>().Play();
-
+        if (muzzleEffect != null)
+        {
+            ParticleSystem ps = muzzleEffect.GetComponent<ParticleSystem>();
+            
+            // 1. Stop the parent AND all children (true), and clear any old particles
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            
+            // 2. Play the parent AND all children (true)
+            ps.Play(true);
+        }
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
