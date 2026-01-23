@@ -10,5 +10,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Hider"))
+        {
+            Destroy(gameObject);
+            Debug.Log("hit");
+        }
+
     }
 }

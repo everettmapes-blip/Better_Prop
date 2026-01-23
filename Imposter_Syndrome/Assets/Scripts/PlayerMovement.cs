@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Camera playerCamera;
     public float walkSpeed = 6f;
+    public int playerHealth = 100;
     public float runSpeed = 12f;
     public float originalWalkSpeed = 6f;
     public float jumpPower = 7f;
@@ -36,6 +37,14 @@ public class PlayerMovement : MonoBehaviour
         originalHeight = characterController.height;
         originalCenter = characterController.center;
         originalCameraY = playerCamera.transform.localPosition.y;
+        if (gameObject.CompareTag("Hider"))
+        {
+            playerHealth = 100;
+        }
+        if (gameObject.CompareTag("Seeker"))
+        {
+            playerHealth = 1000;
+        }
     }
 
     void Update()

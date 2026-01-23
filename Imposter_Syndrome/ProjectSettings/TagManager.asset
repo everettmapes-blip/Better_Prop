@@ -8,6 +8,8 @@ TagManager:
   - Roof
   - Wall
   - Floor
+  - Hider
+  - Seeker
   layers:
   - Default
   - TransparentFX
